@@ -92,3 +92,10 @@
     left: 5%;
     z-index: -1;
 }
+
+/* Form header */
+
+#form-header {
+    margin-top: 1em;
+    color: var(--text-color);
+}
