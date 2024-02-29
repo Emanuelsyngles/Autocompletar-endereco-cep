@@ -1,9 +1,10 @@
 :root {
-    --bg-color: #22F281;
+    --bg-color: #009082;
     --secondary-bg-color:#00CFF5;
     --primary-color: #fff;
-    --text-color:#9557F5;
+    --text-color:#040404;
     --border-color:#29065e;
+    --process:#9f7ad8;
 }
 
 #checkout-page {
@@ -23,7 +24,7 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    z-index: 10;
+    z-index: 10; 
 }
 
 #fade .spinner-border {
@@ -34,7 +35,7 @@
 
 .hide {
     display: none !important;
- }
+}
 
 #message {
     width: 40%;
@@ -43,4 +44,51 @@
 .alert.alert-light p {
     border-bottom: 1px solid #535254;
     padding: 1.2em 0;
+}
+
+#order-form-container {
+    padding: 1.5em;
+}
+
+#steps {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.step i {
+    background-color: var(--secondary-bg-color);
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.step .active {
+    background-color: var(--process);
+    color: var(--primary-color);
+}
+
+.step p {
+    color:  var(--text-color);
+}
+
+.line {
+    border-bottom: 1px solid rgb(255, 251, 0);
+    position: absolute;
+    top: 22.5px;
+    width: 90%;
+    left: 5%;
+    z-index: -1;
 }
