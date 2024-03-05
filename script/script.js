@@ -9,7 +9,7 @@ const formInputs = document.querySelectorAll("[data-input]");
 const closeButton = document.querySelector("#close-message");
 
 // Validate CEP input
-cepInput.addEventListener("Keypress", (e) => {
+cepInput.addEventListener("keypress", (e) => {
     const onlyNumbers = /[0-9]|\./;
     const key = String.fromCharCode(e.keyCode);
 
@@ -18,3 +18,5 @@ cepInput.addEventListener("Keypress", (e) => {
         return;
     }
 })
+
+cepInput.addEventListener("keyup")
