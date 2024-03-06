@@ -19,4 +19,11 @@ cepInput.addEventListener("keypress", (e) => {
     }
 })
 
-cepInput.addEventListener("keyup")
+cepInput.addEventListener("keyup", (e) => {
+
+    const inputValue = e.target.value
+
+    if(inputValue.length === 8) {
+        getAddress(inputValue);
+    }
+});
