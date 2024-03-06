@@ -33,13 +33,18 @@ const getAddress = async (cep) => {
 
     cepInput.blur()
 
-    const apiUrl = `https://viacep.com.br/ws${cep}/json`
+    const apiUrl = `https://viacep.com.br/ws/${cep}/json`
 
     const response = await fetch(apiUrl)
 
     const data = await response.json()
 
-    console.log(data)
+    if(data.erro === "true"){
+        addressForm.reset()
+        toggleLoader()
+
+        return alert('O CEP informado é inválido ou inexistente, por favor digite um cep válido')
+    }
 };
 
 const toggleLoader = () => {
