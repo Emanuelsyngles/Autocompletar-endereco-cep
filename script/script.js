@@ -8,6 +8,8 @@ const formInputs = document.querySelectorAll("[data-input]");
 
 const closeButton = document.querySelector("#close-message");
 
+const fadeElement = document.querySelector("#fade")
+
 // Validate CEP input
 cepInput.addEventListener("keypress", (e) => {
     const onlyNumbers = /[0-9]|\./;
@@ -42,16 +44,38 @@ const getAddress = async (cep) => {
     if(data.erro === "true"){
         addressForm.reset()
         toggleLoader()
-
-        return alert('O CEP informado é inválido ou inexistente, por favor digite um cep válido')
+        toggleMessage("O CEP informado é inválido ou inexistente, por favor insira um novo")
+        return;
     }
+
+    addressInput.value = data.logradouro
+    cityInput.value = data.localidade
+    neighboorhoodInput.value = data.bairro
+    regionInput.value = data.uf
+
+    toggleLoader();
 };
 
 const toggleLoader = () => {
     
-    const fadeElement = document.querySelector("#fade")
     const loaderElement = document.querySelector("#loader")
 
     fadeElement.classList.toggle("hide");
     loaderElement.classList.toggle("hide");
 }
+
+const toggleMessage = (msg) => {
+    
+    const messageElement = document.querySelector("#message")
+
+    const messageElementText = document.querySelector("#message p")
+
+    messageElementText.innerText = msg;
+
+    fadeElement.classList.toggle("hide");
+    messageElement.classList.toggle("hide");
+
+}
+
+
+closeButton.addEventListener('click', () => toggleMessage())
