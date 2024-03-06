@@ -33,7 +33,13 @@ const getAddress = async (cep) => {
 
     cepInput.blur()
 
-    
+    const apiUrl = `https://viacep.com.br/ws${cep}/json`
+
+    const response = await fetch(apiUrl)
+
+    const data = await response.json()
+
+    console.log(data)
 };
 
 const toggleLoader = () => {
