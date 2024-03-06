@@ -27,3 +27,20 @@ cepInput.addEventListener("keyup", (e) => {
         getAddress(inputValue);
     }
 });
+
+const getAddress = async (cep) => {
+    toggleLoader();
+
+    cepInput.blur()
+
+    
+};
+
+const toggleLoader = () => {
+    
+    const fadeElement = document.querySelector("#fade")
+    const loaderElement = document.querySelector("#loader")
+
+    fadeElement.classList.toggle("hide");
+    loaderElement.classList.toggle("hide");
+}
