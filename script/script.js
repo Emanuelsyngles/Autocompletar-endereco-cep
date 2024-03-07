@@ -48,6 +48,8 @@ const getAddress = async (cep) => {
         return;
     }
 
+    toggleDisabled()
+
     addressInput.value = data.logradouro
     cityInput.value = data.localidade
     neighboorhoodInput.value = data.bairro
@@ -55,6 +57,20 @@ const getAddress = async (cep) => {
 
     toggleLoader();
 };
+
+const toggleDisabled = () => {
+
+    if(regionInput.hasAttribute("disabled")) {
+        formInputs.forEach((input) => {
+            input.removeAttribute("disabled")
+        })
+    } else {
+        formInputs.forEach((input) => {
+            input.setAttribute("disabled", "disabled")
+        })
+    }
+
+}
 
 const toggleLoader = () => {
     
