@@ -10,12 +10,12 @@ const closeButton = document.querySelector("#close-message");
 
 const fadeElement = document.querySelector("#fade")
 
-// Validate CEP input
+// Validando CEP input
 cepInput.addEventListener("keypress", (e) => {
     const onlyNumbers = /[0-9]|\./;
     const key = String.fromCharCode(e.keyCode);
 
-    if(!onlyNumbers.test(key)) {
+    if (!onlyNumbers.test(key)) {
         e.preventDefault();
         return;
     }
@@ -25,7 +25,7 @@ cepInput.addEventListener("keyup", (e) => {
 
     const inputValue = e.target.value
 
-    if(inputValue.length === 8) {
+    if (inputValue.length === 8) {
         getAddress(inputValue);
     }
 });
@@ -41,8 +41,8 @@ const getAddress = async (cep) => {
 
     const data = await response.json()
 
-    if(data.erro === "true"){
-        if(!addressInput.hasAttribute("disabled")) {
+    if (data.erro === "true") {
+        if (!addressInput.hasAttribute("disabled")) {
             toggleDisabled();
         }
 
@@ -52,7 +52,7 @@ const getAddress = async (cep) => {
         return;
     }
 
-    if(addressInput.value === "") {
+    if (addressInput.value === "") {
         toggleDisabled();
     }
 
@@ -66,7 +66,7 @@ const getAddress = async (cep) => {
 
 const toggleDisabled = () => {
 
-    if(regionInput.hasAttribute("disabled")) {
+    if (regionInput.hasAttribute("disabled")) {
         formInputs.forEach((input) => {
             input.removeAttribute("disabled")
         })
@@ -79,7 +79,7 @@ const toggleDisabled = () => {
 }
 
 const toggleLoader = () => {
-    
+
     const loaderElement = document.querySelector("#loader")
 
     fadeElement.classList.toggle("hide");
@@ -87,7 +87,7 @@ const toggleLoader = () => {
 }
 
 const toggleMessage = (msg) => {
-    
+
     const messageElement = document.querySelector("#message")
 
     const messageElementText = document.querySelector("#message p")
@@ -101,3 +101,25 @@ const toggleMessage = (msg) => {
 
 
 closeButton.addEventListener('click', () => toggleMessage())
+
+// Salvando o endereço
+
+addressForm.addEventListener('submit', (e) => {
+
+    e.preventDefault()
+
+    toggleLoader()
+
+    setTimeout(() => {
+
+        toggleLoader()
+
+        toggleMessage("Endereço salvo com sucesso!")
+
+        addressForm.reset()
+
+        toggleDisabled()
+
+    }, 1500)
+
+})
