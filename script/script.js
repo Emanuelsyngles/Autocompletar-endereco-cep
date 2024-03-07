@@ -48,7 +48,9 @@ const getAddress = async (cep) => {
         return;
     }
 
-    toggleDisabled()
+    if(addressInput.value === "") {
+        toggleDisabled();
+    }
 
     addressInput.value = data.logradouro
     cityInput.value = data.localidade
