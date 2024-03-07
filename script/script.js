@@ -42,9 +42,13 @@ const getAddress = async (cep) => {
     const data = await response.json()
 
     if(data.erro === "true"){
+        if(!addressInput.hasAttribute("disabled")) {
+            toggleDisabled();
+        }
+
         addressForm.reset()
         toggleLoader()
-        toggleMessage("O CEP informado é inválido ou inexistente, por favor insira um novo")
+        toggleMessage("O CEP informado é inválido ou inexistente, por favor insira um válido!")
         return;
     }
 
